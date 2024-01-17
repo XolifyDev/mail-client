@@ -1,16 +1,20 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import { HashRouter } from "react-router-dom";
 import './index.css'
 import './App.css'
+import { AuthContextProvider } from './contexts/AuthContext.tsx';
+import { Toaster } from './components/ui/toaster.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <HashRouter>
+  // <React.StrictMode>
+  <HashRouter>
+    <AuthContextProvider>
+      <Toaster />
       <App />
-    </HashRouter>
-  </React.StrictMode>,
+    </AuthContextProvider>
+  </HashRouter>
+  // </React.StrictMode>,
 )
 
 // Remove Preload scripts loading
