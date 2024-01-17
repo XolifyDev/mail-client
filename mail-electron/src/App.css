@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    /* Name: custom color palette
+       Author: Ilias Ism
+       URL: https://gradient.page */
+
+    /* CSS: .bg-gradient { background: var(--gradient) } */
+    --gradient: #56CCF2;
+
+    /* --background: 207 55.9% 5.12%; */
+    --background: 220, 7%, 8%;
+    --foreground: 207 8.6% 98.2%;
+
+    --muted: 207 43% 19.2%;
+    --muted-foreground: 207 8.6% 56.4%;
+
+    --popover: 207 47.8% 8.32%;
+    --popover-foreground: 207 8.6% 98.2%;
+
+    --card: 207 47.8% 8.32%;
+    --card-foreground: 207 8.6% 98.2%;
+
+    --border: 207 43% 19.2%;
+    --input: 207 43% 19.2%;
+
+    --primary: 207 86% 64%;
+    --primary-foreground: 207 8.6% 6.4%;
+
+    --secondary: 207 43% 19.2%;
+    --secondary-foreground: 207 8.6% 98.2%;
+
+    --accent: 207 43% 19.2%;
+    --accent-foreground: 207 8.6% 98.2%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 207 8.6% 98.2%;
+
+    --ring: 207 86% 64%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    /* Name: custom color palette
+         Author: Ilias Ism
+         URL: https://gradient.page */
+
+    /* CSS: .bg-gradient { background: var(--gradient) } */
+    --gradient: #56CCF2;
+
+    /* --background: 207 55.9% 5.12%; */
+    --background: 0, 0%, 12%;
+    --foreground: 207 8.6% 98.2%;
+
+    --muted: 207 43% 19.2%;
+    --muted-foreground: 207 8.6% 56.4%;
+
+    --popover: 207 47.8% 8.32%;
+    --popover-foreground: 207 8.6% 98.2%;
+
+    --card: 207 47.8% 8.32%;
+    --card-foreground: 207 8.6% 98.2%;
+
+    --border: 207 43% 19.2%;
+    --input: 207 43% 19.2%;
+
+    --primary: 207 86% 64%;
+    --primary-foreground: 207 8.6% 6.4%;
+
+    --secondary: 207 43% 19.2%;
+    --secondary-foreground: 207 8.6% 98.2%;
+
+    --accent: 207 43% 19.2%;
+    --accent-foreground: 207 8.6% 98.2%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 207 8.6% 98.2%;
+
+    --ring: 207 86% 64%;
+    --radius: 1rem;
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body, #root {
+  min-height: 100dvh;
+  min-width: 100dvw;
+}
