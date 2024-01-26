@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Email {
+  id        Int      @id @default(autoincrement())
+  emailId   String
+  from      String
+  to        String
+  subject   String
+  date      String
+  body      String   @db.LongText
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime
+  read      Boolean  @default(false)
+  User      User     @relation(fields: [userId], references: [id])
+
+  @@index([userId], map: "Email_userId_fkey")
+}
+
+model User {
+  id          String  @id @unique
+  email       String
+  firstName   String
+  lastName    String
+  password    String
+  imap_server String
+  imap_port   String
+  smtp_server String
+  smtp_port   String
+  Email       Email[]
+}

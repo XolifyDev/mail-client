@@ -5,13 +5,16 @@ import './index.css'
 import './App.css'
 import { AuthContextProvider } from './contexts/AuthContext.tsx';
 import { Toaster } from './components/ui/toaster.tsx';
+import { SocketContextProvider } from './contexts/SocketContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   // <React.StrictMode>
   <HashRouter>
     <AuthContextProvider>
       <Toaster />
-      <App />
+      <SocketContextProvider>
+        <App />
+      </SocketContextProvider>
     </AuthContextProvider>
   </HashRouter>
   // </React.StrictMode>,

@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "nodemon src/index.ts",
-    "start": "ts-node src/index.ts",
+    "start": "NODE_TLS_REJECT_UNAUTHORIZED=0 ts-node --skip-project src/index.ts",
     "lint": "npx eslint src/**",
     "type-check": "tsc --noEmit"
   },
@@ -22,9 +22,15 @@
     "dotenv": "^16.3.1",
     "email-validator": "^2.0.4",
     "express": "^4.18.2",
+    "imap": "^0.8.19",
+    "imap-simple": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
+    "mailparser": "^3.6.6",
+    "node-pop3": "^0.9.0",
     "nodemon": "^3.0.3",
     "prisma": "^5.8.1",
+    "quoted-printable": "^1.0.1",
+    "socket.io": "^4.7.4",
     "ts-node": "^10.9.2",
     "zod": "^3.22.4"
   },
@@ -32,8 +38,13 @@
     "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/imap": "^0.8.40",
+    "@types/imap-simple": "^4.2.9",
     "@types/jsonwebtoken": "^9.0.5",
+    "@types/mailparser": "^3.4.4",
     "@types/node": "^20.11.5",
+    "@types/quoted-printable": "^1.0.2",
+    "@types/socket.io": "^3.0.2",
     "typescript": "^5.3.3"
   }
 }

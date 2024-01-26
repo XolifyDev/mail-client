@@ -7,19 +7,39 @@ import { Icons } from "@/components/ui/icons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { AuthContext } from "@/contexts/AuthContext"
+import { useToast } from "./ui/use-toast";
+import { useNavigate } from "react-router-dom"
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> { }
 
 export function LoginAuthForm({ className, ...props }: UserAuthFormProps) {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false)
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const { login } = React.useContext(AuthContext);
+  const { toast } = useToast();
+  const navigate = useNavigate();
 
-  async function onSubmit(event: React.SyntheticEvent) {
+  async function onSubmit(event: React.FormEvent) {
     event.preventDefault()
     setIsLoading(true)
 
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
+    login(event.target.email.value, event.target.password.value).then((result) => {
+      console.log(result);
+      if (result.user) {
+        toast({
+          variant: "success",
+          description: "Welcome back, " + result.user.firstName + " " + result.user.lastName
+        });
+        navigate("/mail/inbox");
+      } else {  
+        toast({
+          variant: "destructive",
+          description: result.error,
+        })
+      }
+    })
+
+    setIsLoading(false)
   }
 
   return (
@@ -40,11 +60,25 @@ export function LoginAuthForm({ className, ...props }: UserAuthFormProps) {
               disabled={isLoading}
             />
           </div>
+          <div className="grid gap-1">
+            <Label className="sr-only" htmlFor="password">
+              Password
+            </Label>
+            <Input
+              id="password"
+              placeholder="•••••••••••"
+              type="password"
+              autoCapitalize="none"
+              autoComplete="password"
+              autoCorrect="off"
+              disabled={isLoading}
+            />
+          </div>
           <Button disabled={isLoading}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Sign In with Email
+            Sign In
           </Button>
         </div>
       </form>

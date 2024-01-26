@@ -11,13 +11,32 @@ datasource db {
 }
 
 model User {
-  id String @id @unique @default(uuid())
-  email String 
-  firstName String
-  lastName String
-  password String
+  id          String @id @unique @default(uuid())
+  email       String
+  firstName   String
+  lastName    String
+  password    String
   imap_server String
-  imap_port String
+  imap_port   String
   smtp_server String
-  smtp_port String
+  smtp_port   String
+
+  emails Email[]
+}
+
+model Email {
+  id        Int      @id @default(autoincrement())
+  emailId String
+  from      String
+  to        String
+  subject   String
+  date      String
+  body      String @db.LongText
+  userId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  read Boolean @default(false)
+
+  // Define a relation to the User model
+  user User @relation(fields: [userId], references: [id])
 }
